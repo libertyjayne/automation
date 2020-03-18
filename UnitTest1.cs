@@ -29,6 +29,7 @@ namespace Automation
             addConsultantButton.Click();
             addConsultantButton.SendKeys("Liberty");
             addConsultantButton.SendKeys("\t");
+            Assert.Pass();
         }
 
         [OneTimeTearDown]
