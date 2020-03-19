@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\liber\\Desktop\\Automation\\Automation.csproj": {}
+    "C:\\Users\\liber\\Desktop\\Automation\\Automation.csproj": {}
   },
   "projects": {
-    "c:\\Users\\liber\\Desktop\\Automation\\Automation.csproj": {
+    "C:\\Users\\liber\\Desktop\\Automation\\Automation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\liber\\Desktop\\Automation\\Automation.csproj",
+        "projectUniqueName": "C:\\Users\\liber\\Desktop\\Automation\\Automation.csproj",
         "projectName": "Automation",
-        "projectPath": "c:\\Users\\liber\\Desktop\\Automation\\Automation.csproj",
+        "projectPath": "C:\\Users\\liber\\Desktop\\Automation\\Automation.csproj",
         "packagesPath": "C:\\Users\\liber\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\liber\\Desktop\\Automation\\obj\\",
+        "outputPath": "C:\\Users\\liber\\Desktop\\Automation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -1,12 +1,12 @@
 using NUnit.Framework;
-// using OpenQA.Selenium.Support.UI;
-// using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
-// using System;
-// using System.Diagnostics;
-// using System.Threading;
-// using System.Collections.Generic;
+using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Collections.Generic;
 
 namespace Automation
 {
@@ -18,24 +18,41 @@ namespace Automation
         [OneTimeSetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            this.driver = SogetiUtils.InitDriver("Chrome", "C:\\webdriver");
+            // driver = new ChromeDriver();
         }
 
+        // [TestCase("TestUser1")]
         [Test]
-        public void TestSignIn()
+        public void PageLoads()
         {
-            driver.Url = "https://profile-ci-web.azurewebsites.net/consultants";
-            IWebElement addConsultantButton = driver.FindElement(By.ClassName("add-button"));
-            addConsultantButton.Click();
-            addConsultantButton.SendKeys("Liberty");
-            addConsultantButton.SendKeys("\t");
+            SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
+            HomePage MainPageObj = new HomePage(driver);
+            // driver.Url = "https://profile-ci-web.azurewebsites.net/consultants";
+            // IWebElement addConsultantButton = driver.FindElement(By.ClassName("add-button"));
+            // addConsultantButton.Click();
+            // addConsultantButton.SendKeys("Liberty");
+            // addConsultantButton.SendKeys("\t");
             Assert.Pass();
         }
+
+        // [Test]
+        // public void PageLoads()
+        // {
+        //     SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
+        //     MainPage MainPageObj = new MainPage(driver);
+        //     // driver.Url = "https://profile-ci-web.azurewebsites.net/consultants";
+        //     // IWebElement addConsultantButton = driver.FindElement(By.ClassName("add-button"));
+        //     // addConsultantButton.Click();
+        //     // addConsultantButton.SendKeys("Liberty");
+        //     // addConsultantButton.SendKeys("\t");
+        //     Assert.Pass();
+        // }
 
         [OneTimeTearDown]
         public void Close()
         {
-            driver.Close();
+            // driver.Close();
         }
     }
 }
