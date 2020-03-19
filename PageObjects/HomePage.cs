@@ -19,7 +19,7 @@ namespace Automation
     public class HomePage 
     {
         IWebDriver driver;
-        IWebElement addConsultantButton;
+        By addConsultantButton = By.ClassName("add-button");
         // public Dictionary<string, By> PageSelectors;
    
         public HomePage(IWebDriver driver)
@@ -28,9 +28,7 @@ namespace Automation
         }
 
         public void clickAddNewConsultantButton(){
-            addConsultantButton = driver.FindElement(By.ClassName("add-button"));
-            addConsultantButton.Click();
-            IWait<IWebDriver> wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            driver.FindElement(addConsultantButton).Click();
         }
 
         public void selectPractice(){

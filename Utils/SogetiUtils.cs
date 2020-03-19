@@ -9,7 +9,7 @@ namespace Automation
 {
     public class SogetiUtils
     {
-        public static HomePage LoadWebPage(IWebDriver driver, string Url, int TimeoutInSecs=10) 
+        public static void LoadWebPage(IWebDriver driver, string Url, int TimeoutInSecs=10) 
         {
             driver.Url = Url;
             new WebDriverWait(
@@ -18,8 +18,6 @@ namespace Automation
             ).Until(
                 d => ((IJavaScriptExecutor) d).ExecuteScript("return document.readyState").Equals("complete")
             );
-            HomePage HomePageObj = new HomePage(driver);
-            return HomePageObj;
         }
 
         public static IWebDriver InitDriver(string DriverType, string DriverDirPath) 

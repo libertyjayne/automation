@@ -19,7 +19,6 @@ namespace Automation
         public void Setup()
         {
             this.driver = SogetiUtils.InitDriver("Chrome", "C:\\webdriver");
-            // driver = new ChromeDriver();
         }
 
         // [TestCase("TestUser1")]
@@ -27,20 +26,14 @@ namespace Automation
         public void PageLoads()
         {
             SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
-            HomePage HomePageObj = new HomePage(driver);
-            // addConsultantButton.Click();
-            // addConsultantButton.SendKeys("Liberty");
-            // addConsultantButton.SendKeys("\t");
-            // Assert.Pass();
         }
 
         [Test]
         public void clickNewConsultant()
         {
-            
-            HomePage HomePageObj = SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
-            HomePageObj.clickAddNewConsultantButton();
-
+            SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
+            HomePage homePageObj = new HomePage(driver);
+            homePageObj.clickAddNewConsultantButton();
         }
 
         [OneTimeTearDown]
