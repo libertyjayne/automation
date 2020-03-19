@@ -27,27 +27,21 @@ namespace Automation
         public void PageLoads()
         {
             SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
-            HomePage MainPageObj = new HomePage(driver);
-            // driver.Url = "https://profile-ci-web.azurewebsites.net/consultants";
-            // IWebElement addConsultantButton = driver.FindElement(By.ClassName("add-button"));
+            HomePage HomePageObj = new HomePage(driver);
             // addConsultantButton.Click();
             // addConsultantButton.SendKeys("Liberty");
             // addConsultantButton.SendKeys("\t");
-            Assert.Pass();
+            // Assert.Pass();
         }
 
-        // [Test]
-        // public void PageLoads()
-        // {
-        //     SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
-        //     MainPage MainPageObj = new MainPage(driver);
-        //     // driver.Url = "https://profile-ci-web.azurewebsites.net/consultants";
-        //     // IWebElement addConsultantButton = driver.FindElement(By.ClassName("add-button"));
-        //     // addConsultantButton.Click();
-        //     // addConsultantButton.SendKeys("Liberty");
-        //     // addConsultantButton.SendKeys("\t");
-        //     Assert.Pass();
-        // }
+        [Test]
+        public void clickNewConsultant()
+        {
+            
+            HomePage HomePageObj = SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
+            HomePageObj.clickAddNewConsultantButton();
+
+        }
 
         [OneTimeTearDown]
         public void Close()
