@@ -27,8 +27,10 @@ namespace Automation
             this.driver = driver;
         }
 
-        public void clickAddNewConsultantButton(){
-            driver.FindElement(addConsultantButton).Click();
+        public void clickAddNewConsultantButton2(){
+            IWait<IWebDriver> wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement subelement = wait2.Until(ExpectedConditions.ElementIsVisible( this.addConsultantButton));
+            this.driver.FindElement(this.addConsultantButton).Click();
         }
 
         public void selectPractice(){

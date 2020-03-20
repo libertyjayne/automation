@@ -33,7 +33,7 @@ namespace Automation
         {
             SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
             HomePage homePageObj = new HomePage(driver);
-            homePageObj.clickAddNewConsultantButton();
+            homePageObj.clickAddNewConsultantButton2();
         }
 
         [OneTimeTearDown]
