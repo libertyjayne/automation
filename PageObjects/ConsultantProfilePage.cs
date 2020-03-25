@@ -16,12 +16,12 @@ using System.Threading.Tasks;
 
 namespace Automation
 {
-    public class ConsultantProfile
+    public class ConsultantProfilePage
     {
         IWebDriver driver;
         public Dictionary<string, By> PageSelectors;
 
-        public ConsultantProfile(IWebDriver driver)
+        public ConsultantProfilePage(IWebDriver driver)
         {
             this.driver = driver;
             this.PageSelectors = new Dictionary<string, By>();
@@ -40,56 +40,56 @@ namespace Automation
         }
 
 
-        public void SetEntryFieldText(string FieldCode, string FieldText, int SleepTimeInMilliSecs=0)
-        {
-            IWebElement ContactIFrame = this.driver.FindElement(this.PageSelectors["ContactInfoIFrame"]);
-            this.driver.SwitchTo().Frame(ContactIFrame);
+        // public void SetEntryFieldText(string FieldCode, string FieldText, int SleepTimeInMilliSecs=0)
+        // {
+        //     IWebElement ContactIFrame = this.driver.FindElement(this.PageSelectors["ContactInfoIFrame"]);
+        //     this.driver.SwitchTo().Frame(ContactIFrame);
             
-            IWait<IWebDriver> wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
-            IWebElement FieldElt = wait.Until(ExpectedConditions.ElementIsVisible(this.PageSelectors[FieldCode]));
+        //     IWait<IWebDriver> wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
+        //     IWebElement FieldElt = wait.Until(ExpectedConditions.ElementIsVisible(this.PageSelectors[FieldCode]));
 
-            FieldElt.SendKeys(FieldText);
+        //     FieldElt.SendKeys(FieldText);
 
-            this.driver.SwitchTo().DefaultContent();
+        //     this.driver.SwitchTo().DefaultContent();
 
-            if (SleepTimeInMilliSecs > 0) {
-                Thread.Sleep(SleepTimeInMilliSecs);
-            } 
-        }
+        //     if (SleepTimeInMilliSecs > 0) {
+        //         Thread.Sleep(SleepTimeInMilliSecs);
+        //     } 
+        // }
 
 
-        public string GetEntryFieldText(string FieldCode)
-        {
-            IWebElement ContactIFrame = this.driver.FindElement(this.PageSelectors["ContactInfoIFrame"]);
-            this.driver.SwitchTo().Frame(ContactIFrame);
+        // public string GetEntryFieldText(string FieldCode)
+        // {
+        //     IWebElement ContactIFrame = this.driver.FindElement(this.PageSelectors["ContactInfoIFrame"]);
+        //     this.driver.SwitchTo().Frame(ContactIFrame);
             
-            IWait<IWebDriver> wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
-            IWebElement FieldElt = wait.Until(ExpectedConditions.ElementIsVisible(this.PageSelectors[FieldCode]));
+        //     IWait<IWebDriver> wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
+        //     IWebElement FieldElt = wait.Until(ExpectedConditions.ElementIsVisible(this.PageSelectors[FieldCode]));
 
-            string FieldText = FieldElt.GetAttribute("value");
+        //     string FieldText = FieldElt.GetAttribute("value");
 
-            this.driver.SwitchTo().DefaultContent();
+        //     this.driver.SwitchTo().DefaultContent();
 
-            return FieldText;
-        }
+        //     return FieldText;
+        // }
 
 
-        public void SelectDropdownValue(string FieldCode, string FieldText, int SleepTimeInMilliSecs=0)
-        {
-            Thread.Sleep(SleepTimeInMilliSecs); 
-            IWebElement ContactIFrame = this.driver.FindElement(this.PageSelectors["ContactInfoIFrame"]);
-            this.driver.SwitchTo().Frame(ContactIFrame);
+        // public void SelectDropdownValue(string FieldCode, string FieldText, int SleepTimeInMilliSecs=0)
+        // {
+        //     Thread.Sleep(SleepTimeInMilliSecs); 
+        //     IWebElement ContactIFrame = this.driver.FindElement(this.PageSelectors["ContactInfoIFrame"]);
+        //     this.driver.SwitchTo().Frame(ContactIFrame);
             
-            IWait<IWebDriver> wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
-            IWebElement FieldElt = wait.Until(ExpectedConditions.ElementIsVisible(this.PageSelectors[FieldCode]));
+        //     IWait<IWebDriver> wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(10));
+        //     IWebElement FieldElt = wait.Until(ExpectedConditions.ElementIsVisible(this.PageSelectors[FieldCode]));
 
-            SelectElement dropdownSelector = new SelectElement(FieldElt);
-            dropdownSelector.SelectByText(FieldText);
+        //     SelectElement dropdownSelector = new SelectElement(FieldElt);
+        //     dropdownSelector.SelectByText(FieldText);
 
-            this.driver.SwitchTo().DefaultContent();
+        //     this.driver.SwitchTo().DefaultContent();
 
-            Thread.Sleep(SleepTimeInMilliSecs); 
-        }
+        //     Thread.Sleep(SleepTimeInMilliSecs); 
+        // }
 
 
         public string GetDropdownValue(string FieldCode)

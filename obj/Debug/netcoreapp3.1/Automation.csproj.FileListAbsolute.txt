@@ -94,3 +94,5 @@ C:\Users\liber\Desktop\Automation\obj\Debug\netcoreapp3.1\Automation.dll
 C:\Users\liber\Desktop\Automation\obj\Debug\netcoreapp3.1\Automation.pdb
 c:\Users\liber\Desktop\Automation\bin\Debug\netcoreapp3.1\WebDriver.Support.dll
 c:\Users\liber\Desktop\Automation\bin\Debug\netcoreapp3.1\WebDriver.dll
+c:\Users\liber\Desktop\Automation\obj\Debug\netcoreapp3.1\Automation.csproj.CoreCompileInputs.cache
+C:\Users\liber\Desktop\Automation\obj\Debug\netcoreapp3.1\Automation.genruntimeconfig.cache

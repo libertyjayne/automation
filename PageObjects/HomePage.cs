@@ -18,26 +18,30 @@ namespace Automation
 {
     public class HomePage 
     {
-        IWebDriver driver;
-        By addConsultantButton = By.ClassName("add-button");
+        private IWebDriver _driver;
+        
         // public Dictionary<string, By> PageSelectors;
+        public IWebElement addConsultantButton => _driver.FindElement(By.ClassName("add-button"));
+        // public IWebElement practiceSelection => _driver.FindElement(By.ClassName("mat-expansion-panel-body"));
+        public Dictionary<string, By> practiceSelectors;
+        // public string[] consultants;
    
         public HomePage(IWebDriver driver)
         {
-            this.driver = driver;
+            _driver = driver;
+            this.practiceSelectors = new Dictionary<string, By>();
+            this.practiceSelectors.Add("AllPractices", By.Name("all"));
         }
 
-        public void clickAddNewConsultantButton2(){
-            IWait<IWebDriver> wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            IWebElement subelement = wait2.Until(ExpectedConditions.ElementIsVisible( this.addConsultantButton));
-            this.driver.FindElement(this.addConsultantButton).Click();
+        public void clickAddNewConsultantButton(){
+            addConsultantButton.Submit();
         }
 
-        public void selectPractice(){
+        public void SelectPractice(By practiceSelector){
 
         }
 
-        public void clickConsultant(){
+        public void ClickConsultant(){
 
         }
 
