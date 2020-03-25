@@ -21,34 +21,37 @@ namespace Automation
             this.driver = SogetiUtils.InitDriver("Chrome", "C:\\webdriver");
         }
 
-        [TestCase("All")]
-        public void PracticeSelection(string practiceSelection)
+        // [TestCase("All")]
+        // [TestCase("ACT")]
+        [Test]
+        public void TestPracticeSelection(string practiceSelection)
         {
             SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
             HomePage homePageObj = new HomePage(driver);
+            homePageObj.SelectPractice(homePageObj.practiceSelectorsDict[practiceSelection]);
         }
 
-        [Test]
-        public void ClickNewConsultant()
-        {
-            Debug.WriteLine("my text message");
-            SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net");
-            HomePage homePageObj = new HomePage(driver);
-            homePageObj.clickAddNewConsultantButton();
-            homePageObj.Equals ("https://profile-ci-web.azurewebsites.net/consultant");
-            Thread.Sleep(5000);  
-        }
+        // [Test]
+        // public void TestClickNewConsultant()
+        // {
+        //     Debug.WriteLine("my text message");
+        //     SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net");
+        //     HomePage homePageObj = new HomePage(driver);
+        //     homePageObj.clickAddNewConsultantButton();
+        //     homePageObj.Equals ("https://profile-ci-web.azurewebsites.net/consultant");
+        //     Thread.Sleep(5000);  
+        // }
 
-        [Test]
-        public void PageLoads()
-        {
-            SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
-        }
+        // [Test]
+        // public void TestHomePageLoads()
+        // {
+        //     SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
+        // }
 
-        [TearDown]
-        public void Close()
-        {
-            driver.Close();
-        }
+        // [TearDown]
+        // public void Close()
+        // {
+        //     driver.Close();
+        // }
     }
 }

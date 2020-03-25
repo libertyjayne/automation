@@ -23,22 +23,25 @@ namespace Automation
         // public Dictionary<string, By> PageSelectors;
         public IWebElement addConsultantButton => _driver.FindElement(By.ClassName("add-button"));
         // public IWebElement practiceSelection => _driver.FindElement(By.ClassName("mat-expansion-panel-body"));
-        public Dictionary<string, By> practiceSelectors;
+        public Dictionary<string, IWebElement> practiceSelectorsDict;
         // public string[] consultants;
    
         public HomePage(IWebDriver driver)
         {
             _driver = driver;
-            this.practiceSelectors = new Dictionary<string, By>();
-            this.practiceSelectors.Add("AllPractices", By.Name("all"));
+            this.practiceSelectorsDict = new Dictionary<string, IWebElement>();
+            this.practiceSelectorsDict.Add("AllPractices", (_driver.FindElement(By.Name("all"))));
+            this.practiceSelectorsDict.Add("ACT", (_driver.FindElement(By.Name("Applications & Cloud Technology"))));
         }
 
-        public void clickAddNewConsultantButton(){
+        public void ClickAddNewConsultantButton(){
             addConsultantButton.Submit();
         }
 
-        public void SelectPractice(By practiceSelector){
-
+        public void SelectPractice(IWebElement practiceSelector){
+            // practiceSelector.Click();
+            IWebElement element = _driver.FindElement(By.Id("mat-radio-3"));
+            element.Click();
         }
 
         public void ClickConsultant(){
