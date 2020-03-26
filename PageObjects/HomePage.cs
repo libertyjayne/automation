@@ -18,63 +18,31 @@ namespace Automation
 {
     public class HomePage 
     {
-        private IWebDriver _driver;
-        
-        // public Dictionary<string, By> PageSelectors;
-        public IWebElement addConsultantButton => _driver.FindElement(By.ClassName("add-button"));
-        // public IWebElement practiceSelection => _driver.FindElement(By.ClassName("mat-expansion-panel-body"));
+        private IWebDriver driver;
+        public IWebElement addConsultantButton => this.driver.FindElement(By.ClassName("add-button"));
         public Dictionary<string, IWebElement> practiceSelectorsDict;
-        // public string[] consultants;
-   
         public HomePage(IWebDriver driver)
         {
-            _driver = driver;
+            this.driver = driver;
             this.practiceSelectorsDict = new Dictionary<string, IWebElement>();
-            this.practiceSelectorsDict.Add("AllPractices", (_driver.FindElement(By.Name("all"))));
-            this.practiceSelectorsDict.Add("ACT", (_driver.FindElement(By.Name("Applications & Cloud Technology"))));
+            this.practiceSelectorsDict.Add("All Practices", (this.driver.FindElement(By.Id("mat-radio-2"))));
+            this.practiceSelectorsDict.Add("Applications & Cloud Technology", (this.driver.FindElement(By.Id("mat-radio-3"))));
+            this.practiceSelectorsDict.Add("Digital Assurance & Testing", (this.driver.FindElement(By.Id("mat-radio-4"))));
+            this.practiceSelectorsDict.Add("Digital Manufactoring", (this.driver.FindElement(By.Id("mat-radio-5"))));
+            this.practiceSelectorsDict.Add("Digital Transformation", (this.driver.FindElement(By.Id("mat-radio-6"))));
+            this.practiceSelectorsDict.Add("Insights & Data", (this.driver.FindElement(By.Id("mat-radio-7"))));
         }
 
         public void ClickAddNewConsultantButton(){
             addConsultantButton.Submit();
         }
 
-        public void SelectPractice(IWebElement practiceSelector){
-            // practiceSelector.Click();
-            IWebElement element = _driver.FindElement(By.Id("mat-radio-3"));
-            element.Click();
+        public void SelectPractice(IWebElement practiceSelectorsDictValue){
+            practiceSelectorsDictValue.Click();
         }
 
         public void ClickConsultant(){
 
         }
-
-        // public void DoMenuHover(By MenuSelector, int HoverSleepTimeInMilliSecs=4000)
-        // {
-        //     IWait<IWebDriver> wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        //     IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(MenuSelector));
-        //     Actions action = new Actions(driver);
-        //     action.MoveToElement(element).Build().Perform();
-
-        //     if (HoverSleepTimeInMilliSecs > 0) { 
-        //         System.Threading.Thread.Sleep(HoverSleepTimeInMilliSecs);
-        //     }
-        // }
-
-        // public void DoMenuHoverThenClickMenuLink(By MenuSelector, string LinkText, int HoverSleepTimeInMilliSecs=4000)
-        // {
-        //     IWait<IWebDriver> wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        //     IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(MenuSelector));
-        //     Actions action = new Actions(driver);
-        //     action.MoveToElement(element).Build().Perform();
-
-        //     if (HoverSleepTimeInMilliSecs > 0) {
-        //         System.Threading.Thread.Sleep(HoverSleepTimeInMilliSecs);
-        //     }
-
-        //     IWait<IWebDriver> wait2 = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        //     IWebElement subelement = wait2.Until(ExpectedConditions.ElementIsVisible(By.LinkText(LinkText)));
-        //     action.MoveToElement(subelement);
-        //     action.Click().Build().Perform();
-        // }
     }
 }

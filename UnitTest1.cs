@@ -14,44 +14,46 @@ namespace Automation
     public class Tests
     {
         IWebDriver driver;
+        HomePage homePageObj;
+        string homePageURL = "https://profile-ci-web.azurewebsites.net/consultants";
+        string consultantPageURL = "https://profile-ci-web.azurewebsites.net/consultant";
         
         [SetUp]
         public void Setup()
         {
             this.driver = SogetiUtils.InitDriver("Chrome", "C:\\webdriver");
+            SogetiUtils.LoadWebPage(this.driver, homePageURL);
+            this.homePageObj = new HomePage(this.driver);
         }
-
-        // [TestCase("All")]
-        // [TestCase("ACT")]
+        
         [Test]
-        public void TestPracticeSelection(string practiceSelection)
+        public void TestHomePageLoads()
         {
-            SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
-            HomePage homePageObj = new HomePage(driver);
-            homePageObj.SelectPractice(homePageObj.practiceSelectorsDict[practiceSelection]);
+            Assert.That(driver.Url.Equals (homePageURL));
         }
 
-        // [Test]
-        // public void TestClickNewConsultant()
-        // {
-        //     Debug.WriteLine("my text message");
-        //     SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net");
-        //     HomePage homePageObj = new HomePage(driver);
-        //     homePageObj.clickAddNewConsultantButton();
-        //     homePageObj.Equals ("https://profile-ci-web.azurewebsites.net/consultant");
-        //     Thread.Sleep(5000);  
-        // }
+        [TestCase("Applications & Cloud Technology")]
+        [TestCase("Digital Assurance & Testing")]
+        [TestCase("Digital Manufactoring")]
+        [TestCase("Digital Transformation")]
+        [TestCase("Insights & Data")]
+        public void TestPracticeSelection(string practiceSelectorsDictKey)
+        {
+            homePageObj.SelectPractice(homePageObj.practiceSelectorsDict[practiceSelectorsDictKey]);
+        }
 
-        // [Test]
-        // public void TestHomePageLoads()
-        // {
-        //     SogetiUtils.LoadWebPage(this.driver, "https://profile-ci-web.azurewebsites.net/consultants");
-        // }
+        [Test]
+        public void TestClickNewConsultant()
+        {
+            homePageObj.ClickAddNewConsultantButton();
+            Assert.That(homePageObj.Equals (consultantPageURL));
+        }
 
-        // [TearDown]
-        // public void Close()
-        // {
-        //     driver.Close();
-        // }
+
+        [TearDown]
+        public void Close()
+        {
+            driver.Close();
+        }
     }
 }
