@@ -46,9 +46,8 @@ namespace Automation
         public void TestClickNewConsultant()
         {
             homePageObj.ClickAddNewConsultantButton();
-            Assert.That(homePageObj.Equals (consultantPageURL));
+            Assert.That(driver.Url.Equals ("https://profile-ci-web.azurewebsites.net/consultant"));
         }
-
 
         [TearDown]
         public void Close()
